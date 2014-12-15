@@ -1,0 +1,25 @@
+# ignore all files in .metadata
+.metadata/**/*
+
+# ignore all files in empty_pydev_dummy 
+# [This is a bug for PyDev, only an empty PyDev project present in the folder could Aptana be able to create Django projects.]
+empty_pydev_dummy/**/*
+
+# ignore all .pyc files
+*.pyc
+
+# ignore gedit temporary files
+*~
+
+# ignore .settings
+*/.settings/**/*
+
+# ignore aptana project files
+.project
+.pydevproject
+
+# ignore .swp files
+*.swp
+
+# ignore mindmap files
+*.mm
