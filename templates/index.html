@@ -1,0 +1,21 @@
+<title>Mina Sidor</title>
+
+<div class = "blog_name">
+<h1>Ensam Lång Väg Hem</h1>
+</dev>
+
+{% for article in articles %}
+<div class = "article_body">
+    <div class = "article_title"><a href = "/articles/details/?id={{ article.id }}">{{ article.title }}</a></div>
+    <div class = "article_info">
+        <ul class = "article_info_list">
+            <li> Category: {{ article.category }}</li>
+            <li> Published: {{ article.publish_time|date:"Y-m-d H:i" }}</li>
+        </ul>
+    </div>
+    <div class = "article_content">
+        {{ article.content }}
+    </div>
+</div>
+</br>
+{% endfor %}
