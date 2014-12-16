@@ -17,6 +17,13 @@ class Category(models.Model):
         return self.name
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=15)
+
+    def __unicode__(self):
+        return self.name
+
+
 class Article(models.Model):
     title = models.CharField(max_length=128)
     subtitle = models.CharField(max_length=50, blank=True)
@@ -24,4 +31,5 @@ class Article(models.Model):
     update_time = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(Author)
     category = models.ForeignKey(Category)
+    tags = models.ManyToManyField(Tag, blank=True)
     content = models.TextField()
