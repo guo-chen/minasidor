@@ -11,4 +11,4 @@ from blog.models import Category
 def list_articles(request):
     articles = Article.objects.all().order_by('-publish_time')
 
-    return render_to_response('index.html', {'articles': articles}, context_instance=RequestContext(request))
+    return render_to_response('blog/index.html', {'articles': articles}, context_instance=RequestContext(request))
