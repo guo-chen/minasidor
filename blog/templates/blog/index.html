@@ -55,9 +55,12 @@
             {% if article.tags.all %}
             Tags: {% for tag in article.tags.all%}{{ tag.name }} {% endfor %}</p>
             {% endif %}
-            <p>{{ article.content|linebreaks }}</p>
+            
             
             <p></p>
+            {% autoescape off %}
+            {{ article.content }}
+            {% endautoescape %}
           </div><!-- /.blog-post -->
            {% endfor %}
           

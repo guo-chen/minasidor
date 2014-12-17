@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db import models
+from django import forms
 from blog.models import Author, Article, Category, Tag
 
 
@@ -9,6 +11,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
+    # formfield_overrides = {models.TextField: {'widget': forms.Textarea(attrs={'class': 'ckeditor'})}, }
     list_display = ('title',
                     'subtitle',
                     'author',
@@ -20,6 +23,9 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ('-publish_time', )
     filter_horizontal = ('tags', )
     # date_hierarchy = 'publish_time'
+
+    # class Media:
+    #     js = ('ckeditor/ckeditor/ckeditor.js', )
 
 
 admin.site.register(Article, ArticleAdmin)

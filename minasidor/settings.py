@@ -99,8 +99,31 @@ TEMPLATE_DIRS = (
 
 # CKEditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "PIL"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+    },
+    'basic': {
+        'toolbar': 'Basic',
+    },
+    'customized': {
+        'toolbar': [["Source"],
+                    ["Format", "Font", "Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "SpellChecker"],
+                    ['Undo', 'Redo'],
+                    ['NumberedList', 'BulletedList'],
+                    ["Indent", "Outdent", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                    ["Link", "Unlink", "Anchor"],
+                    ["CodeSnippet", "Smiley", "Image", "Table"],
+                    ["Maximize"]
+                    ],
+        # 'extraPlugins': "codesnippet",
+    },
+}
 
 # Media
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -32,4 +33,4 @@ class Article(models.Model):
     author = models.ForeignKey(Author)
     category = models.ForeignKey(Category)
     tags = models.ManyToManyField(Tag, blank=True)
-    content = models.TextField()
+    content = RichTextField(config_name="customized")

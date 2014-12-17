@@ -23,3 +23,6 @@ empty_pydev_dummy/**/*
 
 # ignore mindmap files
 *.mm
+
+# ignore media/uploads/* files
+*/media/uploads/**/*
