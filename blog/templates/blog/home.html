@@ -1,0 +1,22 @@
+{% extends "blog/base_page.html" %}
+
+{% block blog_main %}
+
+    {% for article in articles %}
+        <div class="blog-post">
+            <h2 class="blog-post-title"><a href = "/articles/details/?id={{ article.id }}">{{ article.title }}</a></h2>
+            <p class="blog-post-meta">{{ article.publish_time|date:"Y-m-d H:i"}} by <a href="#">{{ article.author }}</a>, {{ article.category }}
+            <br/>
+            {% if article.tags.all %}
+                Tags: {% for tag in article.tags.all%}{{ tag.name }} {% endfor %}</p>
+            {% endif %}
+    
+    
+        <p></p>
+        {% autoescape off %}
+            {{ article.content }}
+        {% endautoescape %}
+        </div><!-- /.blog-post -->
+    {% endfor %}
+
+{% endblock %} 
