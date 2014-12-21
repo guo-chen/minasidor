@@ -25,4 +25,5 @@ empty_pydev_dummy/**/*
 *.mm
 
 # ignore media/uploads/* files
-*/media/uploads/**/*
+# Still needs it at the moment for demonstration
+# */media/uploads/**/*

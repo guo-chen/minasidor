@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in producti on secret!
 SECRET_KEY = 'k@)#n(hz!w@*r$7(d^8&)cj)m8&$r73fc#6v=j-tg5e@)-vb5s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -99,7 +99,7 @@ TEMPLATE_DIRS = (
 
 # CKEditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_IMAGE_BACKEND = "PIL"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 CKEDITOR_CONFIGS = {
