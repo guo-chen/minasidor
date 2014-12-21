@@ -13,9 +13,7 @@
     
     
         <p></p>
-        {% autoescape off %}
-            {{ article.content }}
-        {% endautoescape %}
+        {{ article.content|safe }}      
         </div><!-- /.blog-post -->
     {% endfor %}
 

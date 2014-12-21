@@ -116,10 +116,11 @@ CKEDITOR_CONFIGS = {
                     ['NumberedList', 'BulletedList'],
                     ["Indent", "Outdent", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                     ["Link", "Unlink", "Anchor"],
-                    ["CodeSnippet", "Smiley", "Image", "Table"],
+                    ["CodeSnippet", "texzilla", "Smiley", "Image", "Table"],
                     ["Maximize"]
                     ],
-        # 'extraPlugins': "codesnippet",
+        'extraPlugins': "codesnippet,texzilla",
+        'config.codeSnippet_theme': "googlecode",
     },
 }
 
