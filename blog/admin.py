@@ -22,7 +22,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ('publish_time', )
     ordering = ('-publish_time', )
     filter_horizontal = ('tags', )
-    # date_hierarchy = 'publish_time'
+    date_hierarchy = 'publish_time'
 
     # class Media:
     #     js = ('ckeditor/ckeditor/ckeditor.js', )
