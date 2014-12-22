@@ -120,7 +120,15 @@ CKEDITOR_CONFIGS = {
                     ["Maximize"]
                     ],
         'extraPlugins': "codesnippet,texzilla",
-        'config.codeSnippet_theme': "googlecode",
+        'codeSnippet_theme': "github",
+        'codeSnippet_languages': {'bash': "Bash",
+                                  'python': "Python",
+                                  'perl': "Perl",
+                                  'html': "HTML",
+                                  'makefile': "Makefile",
+                                  'nginx': "Nginx",
+                                  'cpp': "C++",
+                                  },
     },
 }
 
