@@ -5,10 +5,13 @@
     {% for article in articles %}
         <div class="blog-post">
             <h2 class="blog-post-title"><a href = "/articles/details/?id={{ article.id }}">{{ article.title }}</a></h2>
+            {% if article.subtitle %}
+                <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
+            {% endif %}
             <p class="blog-post-meta">{{ article.publish_time|date:"Y-m-d H:i"}} by <a href="#">{{ article.author }}</a>, {{ article.category }}
             <br/>
             {% if article.tags.all %}
-                Tags: {% for tag in article.tags.all%}{{ tag.name }} {% endfor %}</p>
+                Tags: {{ article.tags.all|join:", " }}</p>
             {% endif %}
     
     

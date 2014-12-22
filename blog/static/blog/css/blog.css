@@ -90,6 +90,7 @@ h6, .h6 {
 }
 .blog-description {
   font-size: 20px;
+  font-style: italic;
   color: #999;
 }
 
@@ -143,6 +144,12 @@ h6, .h6 {
 .blog-post-title {
   margin-bottom: 5px;
   font-size: 30px; /* original 40px */
+}
+.blog-post-subtitle {
+  font-size: 15px;
+  font-style: italic;
+  color: #999;
+  
 }
 .blog-post-meta {
   margin-bottom: 20px;
