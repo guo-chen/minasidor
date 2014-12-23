@@ -4,19 +4,18 @@
 
     {% for article in articles %}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href = "/articles/details/?id={{ article.id }}">{{ article.title }}</a></h2>
+            <h2 class="blog-post-title"><a href = "/articles/details/{{ article.id }}">{{ article.title }}</a></h2>
             {% if article.subtitle %}
                 <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
             {% endif %}
-            <p class="blog-post-meta">{{ article.publish_time|date:"Y-m-d H:i"}} by <a href="#">{{ article.author }}</a>, {{ article.category }}
+            <p class="blog-post-meta">{{ article.publish_time|date:"Y-m-d H:i"}} by <a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>, {{ article.category }}
             <br/>
             {% if article.tags.all %}
                 Tags: {{ article.tags.all|join:", " }}</p>
             {% endif %}
-    
-    
-        <p></p>
-        {{ article.content|safe }}      
+
+        {{ article.content|truncatewords_html:150|safe }}
+        <p class="blog-post-meta"><a href = "/articles/details/{{ article.id }}">Read more</a></p>      
         </div><!-- /.blog-post -->
     {% endfor %}
 
