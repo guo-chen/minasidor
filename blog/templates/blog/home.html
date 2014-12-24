@@ -1,11 +1,14 @@
-{% extends "blog/base_page.html" %}
+{% extends "blog/base.html" %}
 
-{% block nav_bar %}
-	<a class="blog-nav-item active" href="{% url 'home' %}">Home</a>
-	<a class="blog-nav-item" href="#">Blogs</a>
-	<a class="blog-nav-item" href="#">Photos</a>
-	<a class="blog-nav-item" href="#">About</a>
+
+{% block home_title %}
+	<div class="blog-header">
+    	<h1 class="blog-title">Long Way From Home</h1>
+        <p class="lead blog-description">Det blev en ensam lång väg hem, det var tur att du kom.</p>
+    </div>
 {% endblock %}
+
+{% block nav_home %}active{% endblock %}
 
 {% block blog_main %}
 
@@ -25,8 +28,19 @@
 	            {% endif %}
 			</p>
         {{ article.content|truncatewords_html:150|safe }}
-        <p class="blog-post-meta"><a href = "/blog/details/{{ article.id }}">Read more</a></p>      
+        <p class="blog-post-meta"><a href = "/blog/details/{{ article.id }}">Continue Reading</a></p>      
         </div><!-- /.blog-post -->
     {% endfor %}
 
-{% endblock %} 
+{% endblock %}
+
+
+{% block nav_pager %}
+	<nav>
+		<ul class="pager">
+        	<li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+

@@ -32,34 +32,32 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-			{% block nav_bar %}
-				{# nav_bar settings #}       
-			{% endblock %}
+			<a class="blog-nav-item {% block nav_home %}{% endblock %}" href="{% url 'home' %}">Home</a>
+			<a class="blog-nav-item {% block nav_blog %}{% endblock %}" href="#">Blogs</a>
+			<a class="blog-nav-item {% block nav_photos %}{% endblock %}" href="#">Photos</a>
+			<a class="blog-nav-item {% block nav_about %}{% endblock %}" href="#">About</a>
         </nav>
       </div>
     </div>
 
     <div class="container">
 
-      <div class="blog-header">
-        <h1 class="blog-title">Long Way From Home</h1>
-        <p class="lead blog-description">Det blev en ensam lång väg hem, det var tur att du kom.</p>
-      </div>
+		{% block home_title %}
+			{# title #}
+			{# blog motto #}
+		{% endblock %}
+
 
       <div class="row">
 
         <div class="col-sm-8 blog-main">
-            {% block blog_main %}
-            {# blog content #}
+        	{% block blog_main %}
+            	{# blog content #}
             {% endblock %}          
           
-          <nav>
-            <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </nav>
-
+			{% block nav_pager%}
+          		{# navigator pager #}
+			{% endblock %}
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -102,6 +100,7 @@
 
     <footer class="blog-footer">
       <p>Powered by Django</p>
+      <p>&copy; Bootstrap &copy; Copyright 2010 - 2014 George Chen</p>
       <p>
         <a href="#">Back to top</a>
       </p>

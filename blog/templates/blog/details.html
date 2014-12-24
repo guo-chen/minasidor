@@ -1,11 +1,8 @@
-{% extends "blog/base_page.html" %}
+{% extends "blog/base.html" %}
+<div></div>
 
-{% block nav_bar %}
-	<a class="blog-nav-item" href="{% url 'home' %}">Home</a>
-	<a class="blog-nav-item active" href="#">Blogs</a>
-	<a class="blog-nav-item" href="#">Photos</a>
-	<a class="blog-nav-item" href="#">About</a>
-{% endblock %}
+
+{% block nav_blog %}active{% endblock %}
 
 {% block blog_main %}
 
