@@ -1,17 +1,16 @@
 {% extends "blog/base_page.html" %}
 
 {% block nav_bar %}
-	<a class="blog-nav-item active" href="{% url 'home' %}">Home</a>
-	<a class="blog-nav-item" href="#">Blogs</a>
+	<a class="blog-nav-item" href="{% url 'home' %}">Home</a>
+	<a class="blog-nav-item active" href="#">Blogs</a>
 	<a class="blog-nav-item" href="#">Photos</a>
 	<a class="blog-nav-item" href="#">About</a>
 {% endblock %}
 
 {% block blog_main %}
 
-    {% for article in articles %}
-        <div class="blog-post">
-            <h2 class="blog-post-title"><a href = "blog/details/{{ article.id }}">{{ article.title }}</a></h2>
+	<div class="blog-post">
+            <h2 class="blog-post-title">{{ article.title }}</h2>
             {% if article.subtitle %}
                 <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
             {% endif %}
@@ -24,9 +23,8 @@
 	                | {{ article.tags.all|join:", " }}
 	            {% endif %}
 			</p>
-        {{ article.content|truncatewords_html:150|safe }}
-        <p class="blog-post-meta"><a href = "/blog/details/{{ article.id }}">Read more</a></p>      
-        </div><!-- /.blog-post -->
-    {% endfor %}
+        {{ article.content|safe }}
+    </div><!-- /.blog-post -->
 
-{% endblock %} 
+
+{% endblock%}
