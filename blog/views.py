@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 # Django's paginator
@@ -17,14 +17,14 @@ def list_articles(request):
 
 
 def show_article_details(request, article_id):
-    article = Article.objects.get(id=article_id)
+    article = get_object_or_404(Article, pk=article_id)
 
     return render_to_response('blog/details.html', {'article': article}, context_instance=RequestContext(request))
 
 
 def home_list_blogs(request):
     article_list = Article.objects.all().order_by('-publish_time')
-    paginator = Paginator(article_list, 5)
+    paginator = Paginator(article_list, 5)  # Show 5 blogs in a page
     page = request.GET.get('page')
     try:
         articles = paginator.page(page)
