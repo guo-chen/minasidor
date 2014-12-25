@@ -38,8 +38,12 @@
 {% block nav_pager %}
 	<nav>
 		<ul class="pager">
-        	<li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
+			{% if articles.has_previous %}
+        		<li><a href="?page={{ articles.previous_page_number}}">Previous</a></li>
+        	{% endif %}
+        	{% if articles.has_next %}
+            	<li><a href="?page={{ articles.next_page_number }}">Next</a></li>
+            {% endif %}
         </ul>
     </nav>
 {% endblock %}
