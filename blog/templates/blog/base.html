@@ -29,6 +29,18 @@
 
   <body>
 
+ 	<div class="container">
+
+		{% block home_title %}
+			<div class="blog-header">
+				{# title #}
+    			<h1 class="blog-title">Long Way From Home</h1>
+    			{# blog motto #}
+        		<p class="lead blog-description">Det blev en ensam lång väg hem, det var tur att du kom.</p>
+    		</div>
+		{% endblock %}
+	</div>
+	
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
@@ -40,13 +52,10 @@
       </div>
     </div>
 
+
     <div class="container">
 
-		{% block home_title %}
-			{# title #}
-			{# blog motto #}
-		{% endblock %}
-
+		
 
       <div class="row">
 
@@ -59,13 +68,15 @@
           		{# navigator pager #}
 			{% endblock %}
         </div><!-- /.blog-main -->
-
+		
+		{% block side_bar %}
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Chen Guo is very motivated and good at handling pressure. He is an accountable team player, and also has shown ability of cooperation in his scrum master role.
-            </p>
-          </div>
+        	<div class="sidebar-module sidebar-module-inset">
+				<h4>About</h4>
+		        <p>Chen Guo is very motivated and good at handling pressure. He is an accountable team player, and also has shown ability of cooperation in his scrum master role.
+		        </p>
+			</div>
+			
           <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
@@ -93,6 +104,7 @@
             </ol>
           </div>
         </div><!-- /.blog-sidebar -->
+        {% endblock %}
 
       </div><!-- /.row -->
 
