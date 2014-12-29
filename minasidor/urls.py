@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from blog import views
+from blog.views import HomeView
 
 admin.autodiscover()
 
@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'minasidor.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'blog.views.home_list_blogs', name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^blog/', include('blog.urls', namespace='blog')),

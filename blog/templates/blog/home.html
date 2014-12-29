@@ -33,6 +33,20 @@
 
 {% endblock %}
 
+{% block sidebar_archives %}	
+	<div class="sidebar-module">
+    	<h4>Archives</h4>
+        <ol class="list-unstyled">
+        	{% for years, months in archives %}
+				{% for month in months %}
+				<li><a href="{{ years.year }}/{{month.month}}">{{month|date:"F"}} {{years.year}}</a></li>
+				{% endfor %}
+			{% endfor %}
+        	<!--<li><a href="#">Home</a></li>-->
+        </ol>
+    </div>
+{% endblock %}
+
 
 {% block nav_pager %}
 	<nav>
