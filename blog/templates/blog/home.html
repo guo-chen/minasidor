@@ -26,8 +26,9 @@
 	                | {{ article.tags.all|join:", " }}
 	            {% endif %}
 			</p>
-        {{ article.content|truncatewords_html:150|safe }}
-        <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>      
+        <!--{{ article.content|truncatewords_html:150|safe }}-->
+        {{ article.content|safe }}
+        <!--<p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>-->      
         </div><!-- /.blog-post -->
     {% endfor %}
 
