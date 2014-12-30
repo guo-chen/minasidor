@@ -45,7 +45,7 @@
       <div class="container">
         <nav class="blog-nav">
 			<a class="blog-nav-item {% block nav_home %}{% endblock %}" href="{% url 'home' %}">Home</a>
-			<a class="blog-nav-item {% block nav_blog %}{% endblock %}" href="#">Blogs</a>
+			<a class="blog-nav-item {% block nav_blog %}{% endblock %}" href="{% url 'blogs' %}">Blogs</a>
 			<a class="blog-nav-item {% block nav_photos %}{% endblock %}" href="#">Photos</a>
 			<a class="blog-nav-item {% block nav_about %}{% endblock %}" href="#">About</a>
         </nav>
@@ -60,6 +60,13 @@
         <div class="col-sm-8 blog-main">
         	{% block blog_main %}
             	{# blog content #}
+            	<div class="blog-post">
+            		<h2 class="blog-post-title">Failsafe_title</h2>
+            		<h3 class="blog-post-subtitle">Failsafe_subtilte</h3>
+            
+            		<p class="blog-post-meta">Failsafe_time by <a href="#">Failsafe_author</a>, Failsafe_category</p>
+					Failsafe_content
+    			</div><!-- /.blog-post -->
             {% endblock %}          
           
 			{% block nav_pager%}
@@ -74,14 +81,18 @@
 		        <p>Chen Guo is very motivated and good at handling pressure. He is an accountable team player, and also has shown ability of cooperation in his scrum master role.
 		        </p>
 			</div>
-		 {% block sidebar_archives %}	
-          <div class="sidebar-module">
-            <h4>Archives</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">Failsafe: Month, Year</a></li>
-            </ol>
-          </div>
-          {% endblock %}
+		{% block sidebar_archives %}	
+			<div class="sidebar-module">
+ 		   	<h4>Archive</h4>
+ 		       <ol class="list-unstyled">
+
+					{% for month, number in archives %}
+						<li><a href="{{ month.year }}/{{ month.month }}">{{ month|date:"F" }} {{ month.year }} ({{ number }})</a></li>
+					{% endfor %}
+        			<!--<li><a href="#">Home</a></li>-->
+  		      </ol>
+  		  </div>
+		{% endblock %}
           <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
@@ -100,7 +111,8 @@
 
     <footer class="blog-footer">
       <p>Powered by Django</p>
-      <p>&copy; Bootstrap &copy; Copyright 2010 - 2014 George Chen</p>
+      <p>Copyright &copy; 2010 - 2014 George Chen</p>
+      <p>Copyright &copy; Bootstrap</p>
       <p>
         <a href="#">Back to top</a>
       </p>

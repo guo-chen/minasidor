@@ -3,6 +3,6 @@ from blog import views
 
 urlpatterns = patterns(
     '',
-    url(r'^archives$', views.BlogArchives.as_view()),
-    url(r'^details/(?P<article_id>\d+)', views.show_article_details, name='blog_details'),
+    url(r'^$', views.BlogArchiveView.as_view(), name='blogs'),
+    url(r'^details/(?P<article_id>\d+)', views.BlogDetailView.as_view(), name='blog_details'),
 )

@@ -13,7 +13,7 @@
 
     {% for article in articles %}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href = "blog/details/{{ article.id }}">{{ article.title }}</a></h2>
+            <h2 class="blog-post-title"><a href = "{% url 'blog_details' article.id %}">{{ article.title }}</a></h2>
             {% if article.subtitle %}
                 <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
             {% endif %}
@@ -27,24 +27,10 @@
 	            {% endif %}
 			</p>
         {{ article.content|truncatewords_html:150|safe }}
-        <p class="blog-post-meta"><a href = "/blog/details/{{ article.id }}">Continue Reading</a></p>      
+        <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>      
         </div><!-- /.blog-post -->
     {% endfor %}
 
-{% endblock %}
-
-{% block sidebar_archives %}	
-	<div class="sidebar-module">
-    	<h4>Archives</h4>
-        <ol class="list-unstyled">
-        	{% for years, months in archives %}
-				{% for month in months %}
-				<li><a href="{{ years.year }}/{{month.month}}">{{month|date:"F"}} {{years.year}}</a></li>
-				{% endfor %}
-			{% endfor %}
-        	<!--<li><a href="#">Home</a></li>-->
-        </ol>
-    </div>
 {% endblock %}
 
 

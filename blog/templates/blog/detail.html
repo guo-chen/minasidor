@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+
+{% block page_title %} {{ article.title }} {% endblock %}
+
+
+{% block nav_blog %}active{% endblock %}
+
+{% block blog_main %}
+
+	<div class="blog-post">
+            <h2 class="blog-post-title">{{ article.title }}</h2>
+            {% if article.subtitle %}
+                <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
+            {% endif %}
+            <p class="blog-post-meta">
+            	{{ article.publish_time|date:"Y-m-d H:i"}} by 
+            	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>, 
+            	{{ article.category }}
+            
+	            {% if article.tags.all %}
+	                | {{ article.tags.all|join:", " }}
+	            {% endif %}
+			</p>
+        {{ article.content|safe }}
+    </div><!-- /.blog-post -->
+
+
+{% endblock%}
+
+
