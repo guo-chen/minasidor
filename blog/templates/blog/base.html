@@ -11,10 +11,10 @@
     <title>{% block page_title %}Long Way From Home{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../static/blog/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../static/blog/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../static/blog/css/blog.css" rel="stylesheet">
+    <link href="../../../static/blog/css/blog.css" rel="stylesheet">
 
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -86,8 +86,8 @@
  		   	<h4>Archive</h4>
  		       <ol class="list-unstyled">
 
-					{% for month, number in archives %}
-						<li><a href="{{ month.year }}/{{ month.month }}">{{ month|date:"F" }} {{ month.year }} ({{ number }})</a></li>
+					{% for month, articles in archives %}
+						<li><a href="{% url 'blog_archive' month.year month.month %}">{{ month|date:"F" }} {{ month.year }} ({{ articles|length }})</a></li>
 					{% endfor %}
         			<!--<li><a href="#">Home</a></li>-->
   		      </ol>
@@ -112,7 +112,7 @@
     <footer class="blog-footer">
       <p>Powered by Django</p>
       <p>Copyright &copy; 2010 - 2014 George Chen</p>
-      <p>Copyright &copy; Bootstrap</p>
+      <!--<p>Copyright &copy; Bootstrap</p>-->
       <p>
         <a href="#">Back to top</a>
       </p>

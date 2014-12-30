@@ -38,7 +38,6 @@ def home_list_blogs(request):
         articles = paginator.page(paginator.num_pages)
 
     return render_to_response('blog/home.html', {'articles': articles}, context_instance=RequestContext(request))
-# ---
 
 
 # --- Class-based views ---
@@ -51,8 +50,8 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         months_with_articles = Article.objects.all().datetimes('publish_time', 'month', 'DESC')
         for month in months_with_articles:
-            number_of_articles = len(Article.objects.all().filter(publish_time__year=month.year, publish_time__month=month.month))
-            archives[month] = number_of_articles
+            articles_in_this_month = Article.objects.all().filter(publish_time__year=month.year, publish_time__month=month.month)
+            archives[month] = articles_in_this_month
         context['archives'] = sorted(archives.items(), reverse=True)
         return context
 
@@ -83,12 +82,23 @@ class BlogDetailView(HomeView):
         return render_to_response(self.template_name, context, context_instance=RequestContext(request))
 
 
-class BlogArchiveView(HomeView):
+class BlogsView(HomeView):
     template_name = "blog/blogs.html"
 
     def get(self, request):
         article_list = Article.objects.all().order_by('-publish_time')
         context = self.get_context_data()
         context['articles'] = article_list
+
+        return render_to_response(self.template_name, context, context_instance=RequestContext(request))
+
+
+class BlogArchiveView(HomeView):
+    template_name = "blog/archive.html"
+
+    def get(self, request, year, month):
+        articles = Article.objects.all().filter(publish_time__year=year, publish_time__month=month)
+        context = self.get_context_data()
+        context['articles'] = articles
 
         return render_to_response(self.template_name, context, context_instance=RequestContext(request))
