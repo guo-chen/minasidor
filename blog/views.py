@@ -11,6 +11,8 @@ from blog.models import Article
 from blog.models import Author
 from blog.models import Category
 
+import datetime
+
 
 # Create your views here.
 # --- Old function based views (Deprecated) ---
@@ -46,13 +48,13 @@ class HomeView(TemplateView):
 
     # Add the context for 'archives'
     def get_context_data(self, **kwargs):
-        archives = {}
+        archives = []
         context = super(HomeView, self).get_context_data(**kwargs)
         months_with_articles = Article.objects.all().datetimes('publish_time', 'month', 'DESC')
         for month in months_with_articles:
             articles_in_this_month = Article.objects.all().filter(publish_time__year=month.year, publish_time__month=month.month)
-            archives[month] = articles_in_this_month
-        context['archives'] = sorted(archives.items(), reverse=True)
+            archives.append((month, articles_in_this_month))
+        context['archives'] = archives[:]
         return context
 
     def get(self, request):
@@ -85,11 +87,26 @@ class BlogDetailView(HomeView):
 class BlogsView(HomeView):
     template_name = "blog/blogs.html"
 
-    def get(self, request):
-        article_list = Article.objects.all().order_by('-publish_time')
-        context = self.get_context_data()
-        context['articles'] = article_list
+#     def get(self, request):
+#         article_list = Article.objects.all().order_by('-publish_time')
+#         context = self.get_context_data()
+#         context['articles'] = article_list
+#
+#         return render_to_response(self.template_name, context, context_instance=RequestContext(request))
 
+    def get(self, request):
+        archive_list = self.get_context_data()['archives']
+        paginator = Paginator(archive_list, 10)
+        page = request.GET.get('page')
+        try:
+            displayed_archive = paginator.page(page)
+        except PageNotAnInteger:
+            displayed_archive = paginator.page(1)
+        except EmptyPage:
+            displayed_archive = paginator.page(paginator.num_pages)
+
+        context = self.get_context_data()
+        context['displayed_archive'] = displayed_archive
         return render_to_response(self.template_name, context, context_instance=RequestContext(request))
 
 
@@ -97,8 +114,19 @@ class BlogArchiveView(HomeView):
     template_name = "blog/archive.html"
 
     def get(self, request, year, month):
-        articles = Article.objects.all().filter(publish_time__year=year, publish_time__month=month)
+        article_list = Article.objects.all().filter(publish_time__year=year, publish_time__month=month)
+        archive_date = datetime.date(int(year), int(month), 1)
+        paginator = Paginator(article_list, 20)
+        page = request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+
         context = self.get_context_data()
         context['articles'] = articles
+        context['archive_date'] = archive_date
 
         return render_to_response(self.template_name, context, context_instance=RequestContext(request))

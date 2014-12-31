@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../static/blog/icons/favicon.ico">
+    <link rel="icon" href="../../../static/blog/icons/favicon.ico">
 
     <title>{% block page_title %}Long Way From Home{% endblock %}</title>
 
@@ -87,7 +87,7 @@
  		       <ol class="list-unstyled">
 
 					{% for month, articles in archives %}
-						<li><a href="{% url 'blog_archive' month.year month.month %}">{{ month|date:"F" }} {{ month.year }} ({{ articles|length }})</a></li>
+						<li><a href="{% url 'blog_archive' month.year month.month %}">{{ month|date:"F o" }} ({{ articles|length }})</a></li>
 					{% endfor %}
         			<!--<li><a href="#">Home</a></li>-->
   		      </ol>

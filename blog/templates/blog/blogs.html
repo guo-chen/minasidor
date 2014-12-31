@@ -6,10 +6,29 @@
 
 {% block blog_main %}
 
-	<div class="blog-post">
-	{% for article in articles %}
-    	<h2 class="blog-list-title"><a href="{% url 'blog_details' article.id %}">{{article.title}}</a></h2>
-        <h3 class="blog-list-meta">{{ article.publish_time }}</h3>
-    {% endfor %}
-    </div><!-- /.blog-post -->
+    <div class="blog-post">
+    	{% for month, articles in displayed_archive %}
+    		
+    			<h2 class="blog-archive-date">{{ month|date:"M Y"}}</h2>
+    			
+    				{% for article in articles %}
+    				<h3 class="blog-archive-list-title"><a href="{% url 'blog_details' article.id %}">{{article.title}}</a></h3>
+    				<h4 class="blog-archive-list-meta">{{ article.publish_time }}</h4>
+    				{% endfor %}
+    			
+    	{% endfor %}
+    </div>
+{% endblock %}
+
+{% block nav_pager %}
+	<nav>
+		<ul class="pager">
+			{% if displayed_archive.has_previous %}
+        		<li><a href="?page={{ displayed_archive.previous_page_number}}">Previous</a></li>
+        	{% endif %}
+        	{% if displayed_archive.has_next %}
+            	<li><a href="?page={{ displayed_archive.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}
