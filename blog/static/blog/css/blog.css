@@ -162,8 +162,12 @@ h6, .h6 {
 }
 .blog-list-title {
   margin-bottom: 5px;
-  font-size: 20px; /* original 40px */
+  font-size: 20px; 
   color:#428BCA;
+}
+.blog-list-meta {
+ font-size: 10px;
+ color: #999;
 }
 
 /*
