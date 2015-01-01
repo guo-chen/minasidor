@@ -52,7 +52,7 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         months_with_articles = Article.objects.all().datetimes('publish_time', 'month', 'DESC')
         for month in months_with_articles:
-            articles_in_this_month = Article.objects.all().filter(publish_time__year=month.year, publish_time__month=month.month)
+            articles_in_this_month = Article.objects.all().filter(publish_time__year=month.year, publish_time__month=month.month).order_by('-publish_time')
             archives.append((month, articles_in_this_month))
         context['archives'] = archives[:]
         return context
@@ -114,7 +114,7 @@ class BlogArchiveView(HomeView):
     template_name = "blog/archive.html"
 
     def get(self, request, year, month):
-        article_list = Article.objects.all().filter(publish_time__year=year, publish_time__month=month)
+        article_list = Article.objects.all().filter(publish_time__year=year, publish_time__month=month).order_by('-publish_time')
         archive_date = datetime.date(int(year), int(month), 1)
         paginator = Paginator(article_list, 20)
         page = request.GET.get('page')
