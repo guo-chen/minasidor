@@ -87,7 +87,7 @@ h6, .h6 {
 .blog-title {
   margin-top: 30px;
   margin-bottom: 0;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: normal;
 }
 .blog-description {
@@ -102,7 +102,7 @@ h6, .h6 {
  */
 
 .blog-main {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -130,7 +130,7 @@ h6, .h6 {
   text-align: left;
 }
 .pager > li > a {
-  width: 160px;
+  width: 125px;
   padding: 10px 20px;
   text-align: center;
   border-radius: 30px;
@@ -147,7 +147,7 @@ h6, .h6 {
 }
 .blog-post-title {
   margin-bottom: 5px;
-  font-size: 30px; /* original 40px */
+  font-size: 25px; /* original 40px */
   color:#428BCA;
 }
 .blog-post-subtitle {
