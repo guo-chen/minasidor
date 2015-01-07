@@ -28,7 +28,12 @@
             	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
 			</p>
         <!--{{ article.content|truncatewords_html:150|safe }}-->
-        {{ article.content|safe }}
+        {% if article.content|length > 5000 %}
+            {{ article.content|truncatewords_html:250|safe }}
+            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>
+        {% else %}
+        	{{ article.content|safe }}
+        {% endif %}
         <!--<p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>-->      
         </div><!-- /.blog-post -->
     {% endfor %}
@@ -39,12 +44,12 @@
 {% block nav_pager %}
 	<nav>
 		<ul class="pager">
+			{% if articles.has_next %}
+            	<li><a href="?page={{ articles.next_page_number }}">Older Posts</a></li>
+            {% endif %}
 			{% if articles.has_previous %}
         		<li><a href="?page={{ articles.previous_page_number}}">Newer Posts</a></li>
         	{% endif %}
-        	{% if articles.has_next %}
-            	<li><a href="?page={{ articles.next_page_number }}">Older Posts</a></li>
-            {% endif %}
         </ul>
     </nav>
 {% endblock %}
