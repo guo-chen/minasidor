@@ -13,15 +13,16 @@
                 <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
             {% endif %}
             <p class="blog-post-meta">
-            	{{ article.publish_time|date:"Y-m-d H:i"}} by 
-            	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>, 
-            	{{ article.category }}
+            	 
+            	<a href="#">{{ article.category }}</a>
             
 	            {% if article.tags.all %}
 	                | {{ article.tags.all|join:", " }}
 	            {% endif %}
+	             | {{ article.publish_time|date:"Y-m-d H:i"}} by 
+            	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
 			</p>
-        {{ article.content|safe }}
+        	{{ article.content|safe }}
     </div><!-- /.blog-post -->
 
 
