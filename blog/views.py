@@ -163,3 +163,8 @@ class BlogArchiveView(HomeView):
         context['archive_date'] = archive_date
 
         return render_to_response(self.template_name, context, context_instance=RequestContext(request))
+
+
+class AboutView(HomeView):
+    template_name = "blog/about.html"
+    
