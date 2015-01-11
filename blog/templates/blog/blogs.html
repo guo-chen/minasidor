@@ -5,7 +5,6 @@
 {% block nav_blog %}active{% endblock %}
 
 {% block blog_main %}
-
     <div class="blog-post">
     	{% for month, articles in displayed_archive %}
     		
@@ -18,6 +17,7 @@
     			
     	{% endfor %}
     </div>
+    
 {% endblock %}
 
 {% block nav_pager %}

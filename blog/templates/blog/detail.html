@@ -14,15 +14,20 @@
             {% endif %}
             <p class="blog-post-meta">
             	 
-            	<a href="#">{{ article.category }}</a>
-            
-	            {% if article.tags.all %}
-	                | {{ article.tags.all|join:", " }}
-	            {% endif %}
+            	<a href="{% url 'blogs'%}?category_name={{article.category.name}}">{{ article.category }}</a>
+
 	             | {{ article.publish_time|date:"Y-m-d H:i"}} by 
             	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
 			</p>
         	{{ article.content|safe }}
+        	{% if article.tags.all %}
+        	<p class="blog-post-meta">
+	    	<!--| {{ article.tags.all|join:", " }}-->
+	        {% for tag in article.tags.all %}
+	        	<a href ="{% url 'blogs' %}?tag_name={{tag.name}}">{{tag.name}}</a>
+	        {%endfor%}
+	        </p>
+	    {% endif %}  
     </div><!-- /.blog-post -->
 
 

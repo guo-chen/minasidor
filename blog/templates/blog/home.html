@@ -19,11 +19,9 @@
             {% endif %}
             <p class="blog-post-meta">
             	 
-            	<a href="#">{{ article.category }}</a>
+            	<a href="{% url 'blogs'%}?category_name={{article.category.name}}">{{ article.category }}</a>
             
-	            {% if article.tags.all %}
-	                | {{ article.tags.all|join:", " }}
-	            {% endif %}
+	            
 	             | {{ article.publish_time|date:"Y-m-d H:i"}} by 
             	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
 			</p>
@@ -34,7 +32,15 @@
         {% else %}
         	{{ article.content|safe }}
         {% endif %}
-        <!--<p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>-->      
+        <!--<p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>-->
+        {% if article.tags.all %}
+        	<p class="blog-post-meta">
+	    	<!--| {{ article.tags.all|join:", " }}-->
+	        {% for tag in article.tags.all %}
+	        	<a href ="{% url 'blogs' %}?tag_name={{tag.name}}">{{tag.name}}</a>
+	        {%endfor%}
+	        </p>
+	    {% endif %}      
         </div><!-- /.blog-post -->
     {% endfor %}
 
