@@ -36,6 +36,7 @@
         {% if article.tags.all %}
         	<p class="blog-post-meta">
 	    	<!--| {{ article.tags.all|join:", " }}-->
+	    	Tags: 
 	        {% for tag in article.tags.all %}
 	        	<a href ="{% url 'blogs' %}?tag_name={{tag.name}}">{{tag.name}}</a>
 	        {%endfor%}

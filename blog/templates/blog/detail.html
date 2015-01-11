@@ -22,6 +22,7 @@
         	{{ article.content|safe }}
         	{% if article.tags.all %}
         	<p class="blog-post-meta">
+        		Tags: 
 	    	<!--| {{ article.tags.all|join:", " }}-->
 	        {% for tag in article.tags.all %}
 	        	<a href ="{% url 'blogs' %}?tag_name={{tag.name}}">{{tag.name}}</a>

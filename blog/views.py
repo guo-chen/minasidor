@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-# from django.http.response import Http404
+from django.utils import timezone
 # Generic class-based views
 from django.views.generic.base import TemplateView
 
@@ -50,12 +50,20 @@ class HomeView(TemplateView):
     # Add the context for 'archives'
     def get_context_data(self, **kwargs):
         archives = []
+        categories_with_number = []
         context = super(HomeView, self).get_context_data(**kwargs)
         months_with_articles = Article.objects.all().datetimes('publish_time', 'month', 'DESC')
         for month in months_with_articles:
             articles_in_this_month = Article.objects.all().filter(publish_time__year=month.year, publish_time__month=month.month).order_by('-publish_time')
             archives.append((month, articles_in_this_month))
         context['archives'] = archives[:]
+        categories = Category.objects.all().order_by('name')
+        for category in categories:
+            number_of_articles_in_this_category = len(Article.objects.all().filter(category=category))
+            categories_with_number.append((category, number_of_articles_in_this_category))
+        context['categories'] = categories_with_number[:]
+        latest_articles = Article.objects.filter(publish_time__lte=timezone.now()).order_by('-publish_time')[:5]
+        context['latest_articles'] = latest_articles
         return context
 
     def get_query_set(self, category_name, tag_name):
