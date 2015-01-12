@@ -80,7 +80,7 @@
 				<h4>Latest Blogs</h4>
 				<ol class="list-unstyled">
 					{% for article in latest_articles %}
-						<li><a href="{% url 'blog_details' article.id %}">{{ article.title }}</li></a>
+						<li><a href="{% url 'blog_details' article.id %}">{{ article.title }}</a> {{ article.publish_time|date:"Y-m-d" }}</li>
 					{% endfor %}
 				</ol>
 			</div>
