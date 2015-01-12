@@ -34,7 +34,7 @@
         {% endif %}
         <!--<p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>-->
         {% if article.tags.all %}
-        	<p class="blog-post-meta">
+        	<p class="blog-post-tag">
 	    	<!--| {{ article.tags.all|join:", " }}-->
 	    	Tags: 
 	        {% for tag in article.tags.all %}

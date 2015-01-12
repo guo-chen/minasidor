@@ -21,7 +21,7 @@
 			</p>
         	{{ article.content|safe }}
         	{% if article.tags.all %}
-        	<p class="blog-post-meta">
+        	<p class="blog-post-tag">
         		Tags: 
 	    	<!--| {{ article.tags.all|join:", " }}-->
 	        {% for tag in article.tags.all %}
