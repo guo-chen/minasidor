@@ -84,6 +84,16 @@
 					{% endfor %}
 				</ol>
 			</div>
+		{% block side_bar_categories %}
+			<div class="sidebar-module">
+				<h4>Categories</h4>
+				<ol class="list-unstyled">
+		        {% for category, number in categories %}
+		        	<li><a href="{% url 'blogs'%}?category_name={{category.name}}">{{ category.name }} ({{number}})</a></li>
+		        {% endfor %}
+		        </ol>
+			</div>
+		{% endblock %}
 		{% block sidebar_archives %}	
 			<div class="sidebar-module">
  		   	<h4>Archives</h4>
@@ -96,16 +106,7 @@
   		      </ol>
   		  </div>
 		{% endblock %}
-		{% block side_bar_categories %}
-			<div class="sidebar-module">
-				<h4>Categories</h4>
-				<ol class="list-unstyled">
-		        {% for category, number in categories %}
-		        	<li><a href="{% url 'blogs'%}?category_name={{category.name}}">{{ category.name }} ({{number}})</a></li>
-		        {% endfor %}
-		        </ol>
-			</div>
-		{% endblock %}
+		
           <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
