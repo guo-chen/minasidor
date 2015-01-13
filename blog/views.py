@@ -46,6 +46,7 @@ def home_list_blogs(request):
 # --- Class-based views ---
 class HomeView(TemplateView):
     template_name = "blog/home.html"
+    page_size = 5
 
     # Add the context for 'archives'
     def get_context_data(self, **kwargs):
@@ -89,7 +90,7 @@ class HomeView(TemplateView):
 
     def get(self, request):
         article_list = Article.objects.all().order_by('-publish_time')
-        paginator = Paginator(article_list, 5)  # Show 5 blogs in a page
+        paginator = Paginator(article_list, self.page_size)  # Show 5 blogs in a page
         page = request.GET.get('page')
         try:
             articles = paginator.page(page)
@@ -116,7 +117,7 @@ class BlogDetailView(HomeView):
 
 class BlogsView(HomeView):
     template_name = "blog/blogs.html"
-    page_size = 10
+    page_size = 12
 
 #     def get(self, request):
 #         article_list = Article.objects.all().order_by('-publish_time')
