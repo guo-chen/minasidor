@@ -105,20 +105,21 @@ CKEDITOR_JQUERY_URL = 'http://code.jquery.com/jquery-latest.min.js'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Full',
+        'toolbar': 'full',
     },
     'basic': {
         'toolbar': 'Basic',
     },
     'customized': {
         'toolbar': [["Source"],
-                    ["Format", "Font", "Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "SpellChecker"],
+                    ["Format", "Font", "Bold", "Italic", "Underline", "Strike", "TextColor", "Subscript", "Superscript", "RemoveFormat"],
                     ['Undo', 'Redo'],
+                    ["Scayt", "Save"],
                     ['NumberedList', 'BulletedList'],
                     ["Indent", "Outdent", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                     ["Link", "Unlink", "Anchor"],
-                    ["CodeSnippet", "texzilla", "Smiley", "Image", "Table"],
-                    ["Maximize"]
+                    ["CodeSnippet", "texzilla", "Smiley", "Blockquote", "Image", "Table"],
+                    ["Maximize"],
                     ],
         'extraPlugins': "codesnippet,texzilla",
         'codeSnippet_theme': "github",

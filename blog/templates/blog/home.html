@@ -26,8 +26,8 @@
             	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
 			</p>
         <!--{{ article.content|truncatewords_html:150|safe }}-->
-        {% if article.content|length > 5000 %}
-            {{ article.content|truncatewords_html:250|safe }}
+        {% if article.content|length > 10000 %}
+            {{ article.content|truncatewords_html:500|safe }}
             <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>
         {% else %}
         	{{ article.content|safe }}
