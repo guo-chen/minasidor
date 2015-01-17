@@ -26,9 +26,9 @@
             	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
 			</p>
         <!--{{ article.content|truncatewords_html:150|safe }}-->
-        {% if article.content|length > 10000 %}
-            {{ article.content|truncatewords_html:500|safe }}
-            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading</a></p>
+        {% if article.content|wordcount > 350 %}
+            {{ article.content|truncatewords_html:350|safe }}
+            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading >></a></p>
         {% else %}
         	{{ article.content|safe }}
         {% endif %}

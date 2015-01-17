@@ -18,6 +18,7 @@ class ArticleAdmin(admin.ModelAdmin):
                     'category',
                     'publish_time',
                     'update_time',
+                    'number_of_clicks',
                     )
     list_filter = ('publish_time', )
     ordering = ('-publish_time', )

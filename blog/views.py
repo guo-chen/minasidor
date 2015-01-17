@@ -65,6 +65,8 @@ class HomeView(TemplateView):
         context['categories'] = categories_with_number[:]
         latest_articles = Article.objects.filter(publish_time__lte=timezone.now()).order_by('-publish_time')[:5]
         context['latest_articles'] = latest_articles
+        hot_articles = Article.objects.order_by('-number_of_clicks')[:5]
+        context['hot_articles'] = hot_articles
         return context
 
     def get_query_set(self, category_name, tag_name):
@@ -110,6 +112,7 @@ class BlogDetailView(HomeView):
 
     def get(self, request, article_id):
         article = get_object_or_404(Article, pk=article_id)
+        article.incr_clicks()
         context = self.get_context_data()
         context['article'] = article
         return render_to_response(self.template_name, context, context_instance=RequestContext(request))
