@@ -34,7 +34,7 @@ class Article(models.Model):
     category = models.ForeignKey(Category)
     tags = models.ManyToManyField(Tag, blank=True)
     content = RichTextField(config_name="customized")
-    number_of_clicks = models.IntegerField(u'Clicks', default=0)
+    number_of_clicks = models.IntegerField(u'Clicks', default=0, editable=False)
 
     def incr_clicks(self):
         self.number_of_clicks += 1
