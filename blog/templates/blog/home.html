@@ -28,7 +28,7 @@
         <!--{{ article.content|truncatewords_html:150|safe }}-->
         {% if article.content|wordcount > 350 %}
             {{ article.content|truncatewords_html:350|safe }}
-            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading >></a></p>
+            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading &raquo;</a></p>
         {% else %}
         	{{ article.content|safe }}
         {% endif %}
