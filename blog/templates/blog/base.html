@@ -92,7 +92,7 @@
 				<h4>Hot Articles</h4>
 				<ol class="list-unstyled">
 					{% for article in hot_articles %}
-						<li><a href="{% url 'blog_details' article.id %}">{{ article.title }}</a> ({{ article.number_of_clicks }})</li>
+						<li><a href="{% url 'blog_details' article.id %}">{{ article.title }}</a> ({{ article.hit_count }})</li>
 					{% endfor %}
 				</ol>
 			</div>-->

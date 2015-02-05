@@ -65,7 +65,7 @@ class HomeView(TemplateView):
         context['categories'] = categories_with_number[:]
         latest_articles = Article.objects.filter(publish_time__lte=timezone.now()).order_by('-publish_time')[:5]
         context['latest_articles'] = latest_articles
-        hot_articles = Article.objects.order_by('-number_of_clicks')[:5]
+        hot_articles = Article.objects.order_by('-hit_count')[:5]
         context['hot_articles'] = hot_articles
         return context
 
