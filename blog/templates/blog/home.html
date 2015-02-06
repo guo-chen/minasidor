@@ -13,22 +13,22 @@
 
     {% for article in articles %}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href = "{% url 'blog_details' article.id %}">{{ article.title }}</a></h2>
+            <h2 class="blog-post-title"><a href = "{% url 'blog_details' article.id %}" style="text-decoration: none">{{ article.title }}</a></h2>
             {% if article.subtitle %}
                 <h3 class="blog-post-subtitle">{{ article.subtitle }}</h3>
             {% endif %}
             <p class="blog-post-meta">
             	 
-            	<a href="{% url 'blogs'%}?category_name={{article.category.name}}">{{ article.category }}</a>
+            	<a href="{% url 'blogs'%}?category_name={{article.category.name}}" style="text-decoration: none">{{ article.category }}</a>
             
 	            
 	             | {{ article.publish_time|date:"Y-m-d H:i"}} by 
-            	<a href="mailto:{{ article.author.email }}?subject=feedback">{{ article.author }}</a>
+            	<a href="mailto:{{ article.author.email }}?subject=feedback" style="text-decoration: none">{{ article.author }}</a>
 			</p>
         <!--{{ article.content|truncatewords_html:150|safe }}-->
         {% if article.content|wordcount > 350 %}
             {{ article.content|truncatewords_html:350|safe }}
-            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}">Continue Reading &raquo;</a></p>
+            <p class="blog-post-meta"><a href = "{% url 'blog_details' article.id %}" style="text-decoration: none">Continue Reading &raquo;</a></p>
         {% else %}
         	{{ article.content|safe }}
         {% endif %}
@@ -38,7 +38,7 @@
 	    	<!--| {{ article.tags.all|join:", " }}-->
 	    	Tags: 
 	        {% for tag in article.tags.all %}
-	        	<a href ="{% url 'blogs' %}?tag_name={{tag.name}}">{{tag.name}}</a>
+	        	<a href ="{% url 'blogs' %}?tag_name={{tag.name}}" style="text-decoration: none">{{tag.name}}</a>
 	        {%endfor%}
 	        </p>
 	    {% endif %}      

@@ -82,7 +82,7 @@
 				<h4>Latest Blogs</h4>
 				<ol class="list-unstyled">
 					{% for article in latest_articles %}
-						<li><a href="{% url 'blog_details' article.id %}">{{ article.title }}</a> {{ article.publish_time|date:"Y-m-d" }}</li>
+						<li><a href="{% url 'blog_details' article.id %}" style="text-decoration: none">{{ article.title }}</a> {{ article.publish_time|date:"Y-m-d" }}</li>
 					{% endfor %}
 				</ol>
 			</div>
@@ -102,7 +102,7 @@
 				<h4>Categories</h4>
 				<ol class="list-unstyled">
 		        {% for category, number in categories %}
-		        	<li><a href="{% url 'blogs'%}?category_name={{category.name}}">{{ category.name }} ({{number}})</a></li>
+		        	<li><a href="{% url 'blogs'%}?category_name={{category.name}}" style="text-decoration: none">{{ category.name }} ({{number}})</a></li>
 		        {% endfor %}
 		        </ol>
 			</div>
@@ -113,7 +113,7 @@
  		       <ol class="list-unstyled">
 
 					{% for month, articles in archives %}
-						<li><a href="{% url 'blog_archive' month.year month.month %}">{{ month|date:"F o" }} ({{ articles|length }})</a></li>
+						<li><a href="{% url 'blog_archive' month.year month.month %}" style="text-decoration: none">{{ month|date:"F o" }} ({{ articles|length }})</a></li>
 					{% endfor %}
         			<!--<li><a href="#">Home</a></li>-->
   		      </ol>
@@ -123,9 +123,9 @@
           <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
-              <li><a href="http://weibo.com/hjaertan/">Weibo</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Github</a></li>
+              <li><a href="http://weibo.com/hjaertan/" style="text-decoration: none">Weibo</a></li>
+              <li><a href="#" style="text-decoration: none">Facebook</a></li>
+              <li><a href="#" style="text-decoration: none">Github</a></li>
             </ol>
           </div>
         </div><!-- /.blog-sidebar -->
@@ -144,6 +144,7 @@
       </p>
     </footer>
 
+    <a class="go-to-top" href="#">Top</a>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -153,5 +154,6 @@
     <!--<script src="../../assets/js/docs.min.js"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+
   </body>
 </html>

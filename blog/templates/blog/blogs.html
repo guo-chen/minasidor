@@ -11,7 +11,7 @@
     			<h2 class="blog-archive-date">{{ month|date:"M Y"}}</h2>
     			
     				{% for article in articles %}
-    				<h3 class="blog-archive-list-title"><a href="{% url 'blog_details' article.id %}">{{article.title}}</a></h3>
+    				<h3 class="blog-archive-list-title"><a href="{% url 'blog_details' article.id %}" style="text-decoration: none">{{article.title}}</a></h3>
     				<h4 class="blog-archive-list-meta">{{ article.publish_time }}</h4>
     				{% endfor %}
     			

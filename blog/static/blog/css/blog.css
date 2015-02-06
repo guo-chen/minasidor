@@ -196,3 +196,22 @@ h6, .h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+.go-to-top {
+    position: fixed; 
+    right: 15px; 
+    bottom: 15px; 
+    outline: medium none; 
+    border: 0px none; 
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #CCCCCC;
+    font-size: 12px;
+    padding: 1em;
+    border-radius: 10px;
+    /*display: none;*/
+}.go-to-top:hover {
+    color: #FFFFFF;
+    text-decoration: none;  
+    background-color: #428bca;
+} 
