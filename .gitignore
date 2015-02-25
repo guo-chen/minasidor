@@ -27,3 +27,9 @@ empty_pydev_dummy/**/*
 # ignore media/uploads/* files
 # Still needs it at the moment for demonstration
 # */media/uploads/**/*
+
+# ignore db
+*.sqlite3
+
+# ignore about information
+about.html
