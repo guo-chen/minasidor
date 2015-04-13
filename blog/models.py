@@ -36,6 +36,9 @@ class Article(models.Model):
     content = RichTextField(config_name="customized")
     hit_count = models.IntegerField(u'Hits', default=0, editable=False)
 
+    def __unicode__(self):
+        return self.title
+
     def incr_clicks(self):
         self.hit_count += 1
         self.save()
